@@ -4,12 +4,11 @@ import { Compass, LogOut, User } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useEffect, useState } from "react";
-import { User as SupabaseUser } from "@supabase/supabase-js";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [user, setUser] = useState<SupabaseUser | null>(null);
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
